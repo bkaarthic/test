@@ -17,6 +17,7 @@ pipeline {
               echo "deploying the application"
           }
         }
+    }
     post {
         success {
             mail bcc: '', body: '', cc: '', from: '', replyTo: '', subject: 'build successfull', to: 'bkaarthic@gmail.com'
