@@ -20,10 +20,10 @@ pipeline {
     }
     post {
         success {
-            mail bcc: '', body: '', cc: '', from: '', replyTo: '', subject: 'build successfull', to: 'bkaarthic@gmail.com'
+            mail bcc: '', body: 'successfully deployed', cc: '', from: '', replyTo: '', subject: 'build successfully', to: 'bkaarthic@gmail.com'
         }
         failure {
-            mail bcc: '', body: '', cc: '', from: '', replyTo: '', subject: 'build failed', to: 'bkaarthic@gmail.com'
+            mail bcc: '', body: 'successfully deployed', cc: '', from: '', replyTo: '', subject: 'build failed', to: 'bkaarthic@gmail.com'
         }
     }
 }
