@@ -15,8 +15,8 @@ jobs:
 
     - name: Copy code to target directory
       run: |
-        if (Test-Path "C:\Test4") { Remove-Item -Path "C:\Test4" -Recurse -Force }
-        New-Item -ItemType Directory -Force -Path "C:\Test4"
+        if (Test-Path "C:\Test5") { Remove-Item -Path "C:\Test5" -Recurse -Force }
+        New-Item -ItemType Directory -Force -Path "C:\Test5"
         Set-Content -Path exclude.txt -Value '.github'
-        xcopy /E /I /EXCLUDE:exclude.txt . "C:\Test4"
+        xcopy /E /I /EXCLUDE:exclude.txt . "C:\Test5"
       shell: powershell
