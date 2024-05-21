@@ -13,6 +13,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Clone repo
+    - name: Copy code to target directory
       run: |
-        mkdir "C:\Test5"
+        if (Test-Path "C:\Test4") { Remove-Item -Path "C:\Test4" -Recurse -Force }
+        New-Item -ItemType Directory -Force -Path "C:\Test4"
+        Set-Content -Path exclude.txt -Value '.github'
+        xcopy /E /I /EXCLUDE:exclude.txt . "C:\Test4"
+      shell: powershell
