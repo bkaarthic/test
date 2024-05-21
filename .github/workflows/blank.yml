@@ -1,0 +1,22 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Copy code to target directory
+      run: |
+        if (Test-Path "C:\Test4") { Remove-Item -Path "C:\Test4" -Recurse -Force }
+        New-Item -ItemType Directory -Force -Path "C:\Test4"
+        Set-Content -Path exclude.txt -Value '.github'
+        xcopy /E /I /EXCLUDE:exclude.txt . "C:\Test4"
+      shell: powershell
