@@ -6,8 +6,23 @@ on:
       - main
 
 jobs:
-  deploy:
+  deploy_self_hosted:
     runs-on: self-hosted
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Copy code to target directory
+      run: |
+        if (Test-Path "C:\Test5") { Remove-Item -Path "C:\Test5" -Recurse -Force }
+        New-Item -ItemType Directory -Force -Path "C:\Test5"
+        Set-Content -Path exclude.txt -Value '.github'
+        xcopy /E /I /EXCLUDE:exclude.txt . "C:\Test5"
+      shell: powershell
+
+  deploy_label_1:
+    runs-on: label-1
 
     steps:
     - name: Checkout code
